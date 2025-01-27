@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using ProductClientHub.API.Filters;
+using ProductClientHub.API.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
