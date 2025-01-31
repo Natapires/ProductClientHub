@@ -8,10 +8,10 @@ public class ProductClientHubDbContext : DbContext
     public DbSet<Client> Clients { get; set; } = default!;
     public DbSet<Product> Products { get; set; } = default!;
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public ProductClientHubDbContext(DbContextOptions<ProductClientHubDbContext> options) : base(options) { }
+
+    public ProductClientHubDbContext()
     {
-        optionsBuilder.UseMySql(
-            "Server=localhost;Database=ProductClientHub;User=root;Password=12041995",
-            new MySqlServerVersion(new Version(8, 0, 40)));
+        throw new NotImplementedException();
     }
 }
