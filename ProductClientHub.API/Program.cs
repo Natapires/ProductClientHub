@@ -1,15 +1,6 @@
-using Microsoft.EntityFrameworkCore;
 using ProductClientHub.API.Filters;
-using ProductClientHub.API.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Configuração da conexão com o banco de dados
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-builder.Services.AddDbContext<ProductClientHubDbContext>(options =>
-    options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 40)))
-);
 
 // Adicionando os serviços da API
 builder.Services.AddControllers();
@@ -26,7 +17,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
