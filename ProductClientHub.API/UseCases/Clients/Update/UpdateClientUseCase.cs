@@ -15,6 +15,16 @@ public class UpdateClientUseCase
         var dbContext = new ProductClientHubDbContext();
 
         var entity = dbContext.Clients.FirstOrDefault(client => client.Id == clientId);
+        if (entity is null)
+        {
+            throw new NotFoundException("O cliente nao foi encontrado.");
+        }
+
+        entity.Name = request.Name;
+        entity.Email = request.Email;
+
+        dbContext.Clients.Update(entity);
+        dbContext.SaveChanges();
     }
 
     private void Validate(RequestClientJson request)
