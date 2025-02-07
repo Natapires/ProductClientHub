@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Options;
 using ProductClientHub.API.Infrastructure;
 using ProductClientHub.API.UseCases.Clients.Register;
 using ProductClientHub.Communication.Requests;
