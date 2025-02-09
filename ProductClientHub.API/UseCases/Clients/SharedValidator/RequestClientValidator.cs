@@ -7,7 +7,7 @@ public class RequestClientValidator : AbstractValidator<RequestClientJson>
 {
     public RequestClientValidator()
     {
-        RuleFor(client => client.Name).NotEmpty().WithMessage("O nome nao pode ser vazio");
-        RuleFor(client => client.Email).EmailAddress().WithMessage("Este e-mail nao e valido.");
+        RuleFor(client => client.Name).NotEmpty().WithMessage("O nome não pode ser vázio");
+        RuleFor(client => client.Email).EmailAddress().WithMessage("Este e-mail não é válido.");
     }
 }
