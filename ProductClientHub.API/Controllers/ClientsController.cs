@@ -24,6 +24,21 @@ public class ClientsController : ControllerBase
 
         return Created(string.Empty, response);
     }
+    
+    [HttpGet]
+    [ProducesResponseType(typeof(ResponseAllClientsJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public IActionResult GetAll()
+    {
+        var useCase = new GetAllClientsUseCase(); //Estou instanciondo o caso de uso para buscar clientes
+
+        var response = useCase.Execute(); //Executando a logica para obter clientes
+
+        if (response.Clients.Count == 0) //Verificado se a lista de clientes esta vazia
+            return NoContent(); //Se estiver vazia, deve me retornar 204 No Content, sem corpo
+        
+        return Ok(response); //Retorna 200 com a lista do cliente
+    }
         
     [HttpPut]
     [Route("{id}")]
@@ -37,21 +52,6 @@ public class ClientsController : ControllerBase
         useCase.Execute(id, request);
             
         return NoContent();
-    }
-        
-    [HttpGet]
-    [ProducesResponseType(typeof(ResponseAllClientsJson), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public IActionResult GetAll()
-    {
-        var useCase = new GetAllClientsUseCase();
-
-        var response = useCase.Execute();
-
-        if (!response.Clients.Any())
-            return NoContent();
-            
-        return Ok(response);
     }
         
     [HttpGet]

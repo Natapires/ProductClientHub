@@ -2,5 +2,5 @@ namespace ProductClientHub.Communication.Responses;
 
 public class ResponseAllClientsJson
 {
-    public IEnumerable<ResponseShortClientJson> Clients { get; set; } = [];
+    public List<ResponseShortClientJson> Clients { get; set; } = [];
 }
